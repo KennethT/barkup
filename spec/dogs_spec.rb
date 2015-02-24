@@ -19,7 +19,7 @@ describe Dogs do
     end
   end
 
-  describe "#large_dogs_names" do
+  describe "#large_dog_names" do
     it "returns all of the big dogs" do
       expect(dogs.large_dog_names).to match_array(["Fido", "Bruiser", "Beast"])
     end
