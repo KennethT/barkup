@@ -37,6 +37,10 @@ class Dogs
   def huge_dog
     @dogs.select {|dog| dog[:size] == :huge}[0]
   end
+  # alternate solution to number 2
+  # def huge_dog
+  #   @dogs.find {|dog| dog[:size] == :huge}
+  # end
 
   def large_dog_names
     @dogs.select {|dog| dog[:size] == :large}.map {|dog| dog[:name]}
@@ -44,6 +48,35 @@ class Dogs
 
   def joes_large_dogs
     @dogs.select {|dog| dog[:owner][:name][:first] == "Joe"}.select {|dog| dog[:size] == :large}.map {|dog| dog[:name]}
+    # alternate solution
+    # @dogs.select {|dog| dog[:owner][:name][:first] == "Joe" && dog[:size] == :large}.map {|dog| dog[:name]}
   end
+
+  def sizes
+    # sizes = []
+    # @dogs.map do |dog|
+    #   dog.map do |x,y|
+    #     if x == :size && !(sizes.include?(y))
+    #       sizes << y
+    #     end
+    #   end
+    # end
+    # sizes
+    @dogs.map {|dog| dog[:size] }.uniq
+  end
+
+def owners
+  # @dogs.map {|dog| dog[:owner] }.uniq.map {|owner| owner[:name][:first] + " " + owner[:name][:last] }
+  @dogs.map {|dog| dog[:owner][:name].values.join(" ")}.uniq
+end
+
+def average_owners
+  @dogs.map do |dog|
+    if dog[:owner][:owner_quality] == AVERAGE
+      dog[:owner][:name][:first] + " " + dog[:owner][:name][:last]
+    end
+  end.compact.uniq
+end
+
 
 end
