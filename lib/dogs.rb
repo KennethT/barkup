@@ -30,9 +30,9 @@ class Dogs
 
 
   # only edit below this line
-
-
-
+def small_dogs
+  @dogs.select {|dog| dog[:size] == :small}
+end
 
 
 
