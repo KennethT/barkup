@@ -34,6 +34,8 @@ def small_dogs
   @dogs.select {|dog| dog[:size] == :small}
 end
 
-
+def huge_dog
+  @dogs.select {|dog| dog[:size] == :huge}[0]
+end
 
 end
